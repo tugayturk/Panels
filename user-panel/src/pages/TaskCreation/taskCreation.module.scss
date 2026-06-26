@@ -1,0 +1,58 @@
+.card {
+  width: 70%;
+  margin: 0 auto;
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 4px 16px var(--shadow, rgba(0, 0, 0, 0.08));
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text);
+
+  :global(.ant-card-head) {
+    border-bottom-color: var(--border) !important;
+  }
+
+  :global(.ant-card-head-title) {
+    color: var(--text) !important;
+  }
+
+  :global(.ant-card-body) {
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  :global(.ant-form-item-label > label) {
+    color: var(--text) !important;
+  }
+
+  :global(.ant-input),
+  :global(.ant-input-affix-wrapper),
+  :global(.ant-select-selector),
+  :global(.ant-input-textarea textarea) {
+    background: var(--input-bg, var(--surface)) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+  }
+
+  :global(.ant-input::placeholder),
+  :global(.ant-input-textarea textarea::placeholder),
+  :global(.ant-select-selection-placeholder) {
+    color: var(--text-secondary, #9ca3af) !important;
+  }
+}
+
+.form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.submitItem {
+  :global(.ant-form-item-control-input-content) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.button {
+  min-width: 120px;
+}

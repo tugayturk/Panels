@@ -1,0 +1,59 @@
+.statCard {
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  height: 100%;
+
+  :global(.ant-card-body) {
+    padding: 20px 24px;
+  }
+
+  :global(.ant-statistic-title) {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  :global(.ant-statistic-content-value) {
+    font-size: 28px;
+    font-weight: 600;
+  }
+}
+
+.statsRow {
+  margin-top: 16px;
+}
+
+.chartContainer {
+  margin-top: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.priorityRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.priorityLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.priorityCount {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.table {
+  margin-top: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.tableTitle {
+  cursor:pointer
+}

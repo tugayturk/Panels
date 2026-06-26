@@ -1,0 +1,24 @@
+:root,
+[data-theme="light"] {
+  --bg: #f5f5f5;
+  --surface: #ffffff;
+  --input-bg: #ffffff;
+  --text: #1f2937;
+  --text-secondary: #6b7280;
+  --primary: #2563eb;
+  --border: #e5e7eb;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --radius-lg: 12px;
+}
+
+[data-theme="dark"] {
+  --bg: #111827;
+  --surface: #1f2937;
+  --input-bg: #111827;
+  --text: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --primary: #60a5fa;
+  --border: #374151;
+  --shadow: rgba(0, 0, 0, 0.35);
+  --radius-lg: 12px;
+}

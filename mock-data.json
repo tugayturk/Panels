@@ -1,0 +1,322 @@
+{
+  "meta": {
+    "description": "Task Approval System — paylaşımlı mock data (user-panel + admin-panel)",
+    "version": "1.0.0",
+    "notes": [
+      "Şifreler sadece mock ortam içindir; production'da asla plain text tutulmaz.",
+      "Tarihler ISO 8601 (UTC). Dashboard 'bugün' testleri için 2026-06-23 tarihli kayıtlar içerir.",
+      "createdBy → users[].id ile eşleşir. Liste ekranlarında name göstermek için users join yapılır."
+    ]
+  },
+  "users": [
+    {
+      "id": "usr-001",
+      "name": "Ayşe Yılmaz",
+      "email": "user1@test.com",
+      "password": "123456",
+      "department": "Operasyon"
+    },
+    {
+      "id": "usr-002",
+      "name": "Mehmet Kaya",
+      "email": "user2@test.com",
+      "password": "123456",
+      "department": "Satın Alma"
+    },
+    {
+      "id": "usr-003",
+      "name": "Zeynep Demir",
+      "email": "user3@test.com",
+      "password": "123456",
+      "department": "İnsan Kaynakları"
+    }
+  ],
+  "adminUsers": [
+    {
+      "id": "adm-001",
+      "name": "Ali Admin",
+      "email": "admin@test.com",
+      "password": "admin123",
+      "role": "Admin"
+    },
+    {
+      "id": "adm-002",
+      "name": "Selin Moderator",
+      "email": "moderator@test.com",
+      "password": "mod123",
+      "role": "Moderator"
+    },
+    {
+      "id": "adm-003",
+      "name": "Can Viewer",
+      "email": "viewer@test.com",
+      "password": "viewer123",
+      "role": "Viewer"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "tsk-001",
+      "title": "VPN erişimi açılması",
+      "description": "Evden çalışma için VPN hesabımın aktifleştirilmesini rica ediyorum.",
+      "priority": "high",
+      "category": "Teknik Destek",
+      "status": "pending",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-23T08:15:00.000Z",
+      "updatedAt": "2026-06-23T08:15:00.000Z"
+    },
+    {
+      "id": "tsk-002",
+      "title": "Yıllık izin talebi — 10-14 Temmuz",
+      "description": "10-14 Temmuz tarihleri arasında 5 gün yıllık izin kullanmak istiyorum.",
+      "priority": "normal",
+      "category": "İzin Talebi",
+      "status": "pending",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-23T09:30:00.000Z",
+      "updatedAt": "2026-06-23T09:30:00.000Z"
+    },
+    {
+      "id": "tsk-003",
+      "title": "Acil: Prod ortam log erişimi",
+      "description": "Müşteri şikayeti nedeniyle prod loglarına acil erişim gerekiyor.",
+      "priority": "urgent",
+      "category": "Teknik Destek",
+      "status": "pending",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-23T10:05:00.000Z",
+      "updatedAt": "2026-06-23T10:05:00.000Z"
+    },
+    {
+      "id": "tsk-004",
+      "title": "Laptop batarya değişimi",
+      "description": "Cihaz şarj tutmuyor, batarya değişimi veya cihaz yenileme talep ediyorum.",
+      "priority": "normal",
+      "category": "Teknik Destek",
+      "status": "pending",
+      "createdBy": "usr-003",
+      "createdAt": "2026-06-22T14:20:00.000Z",
+      "updatedAt": "2026-06-22T14:20:00.000Z"
+    },
+    {
+      "id": "tsk-005",
+      "title": "Ofis kırtasiye siparişi",
+      "description": "A4 kağıt (5 paket), toner ve post-it siparişi.",
+      "priority": "low",
+      "category": "Satın Alma",
+      "status": "pending",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-21T11:00:00.000Z",
+      "updatedAt": "2026-06-21T11:00:00.000Z"
+    },
+    {
+      "id": "tsk-006",
+      "title": "Eğitim konferans katılım onayı",
+      "description": "React Summit etkinliğine katılım için bütçe ve izin onayı.",
+      "priority": "normal",
+      "category": "Diğer",
+      "status": "pending",
+      "createdBy": "usr-003",
+      "createdAt": "2026-06-20T16:45:00.000Z",
+      "updatedAt": "2026-06-20T16:45:00.000Z"
+    },
+    {
+      "id": "tsk-007",
+      "title": "Monitör talebi — 27 inç",
+      "description": "Çift ekran çalışması için ikinci monitör talebi.",
+      "priority": "low",
+      "category": "Satın Alma",
+      "status": "approved",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-23T07:00:00.000Z",
+      "updatedAt": "2026-06-23T11:20:00.000Z",
+      "reviewedBy": "adm-002",
+      "reviewedAt": "2026-06-23T11:20:00.000Z"
+    },
+    {
+      "id": "tsk-008",
+      "title": "Hastalık izni — 2 gün",
+      "description": "20-21 Haziran tarihleri için raporlu hastalık izni.",
+      "priority": "normal",
+      "category": "İzin Talebi",
+      "status": "approved",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-18T08:00:00.000Z",
+      "updatedAt": "2026-06-23T09:10:00.000Z",
+      "reviewedBy": "adm-001",
+      "reviewedAt": "2026-06-23T09:10:00.000Z"
+    },
+    {
+      "id": "tsk-009",
+      "title": "Slack kanal erişimi",
+      "description": "#finance-internal kanalına erişim talebi.",
+      "priority": "normal",
+      "category": "Teknik Destek",
+      "status": "approved",
+      "createdBy": "usr-003",
+      "createdAt": "2026-06-17T13:30:00.000Z",
+      "updatedAt": "2026-06-22T10:00:00.000Z",
+      "reviewedBy": "adm-002",
+      "reviewedAt": "2026-06-22T10:00:00.000Z"
+    },
+    {
+      "id": "tsk-010",
+      "title": "Yazılım lisans yenileme",
+      "description": "Figma lisansının yıllık yenilenmesi için satın alma talebi.",
+      "priority": "high",
+      "category": "Satın Alma",
+      "status": "approved",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-15T09:00:00.000Z",
+      "updatedAt": "2026-06-23T08:45:00.000Z",
+      "reviewedBy": "adm-001",
+      "reviewedAt": "2026-06-23T08:45:00.000Z"
+    },
+    {
+      "id": "tsk-011",
+      "title": "Uzaktan çalışma talebi — Cuma",
+      "description": "Kişisel randevu nedeniyle bu Cuma uzaktan çalışma talebi.",
+      "priority": "low",
+      "category": "İzin Talebi",
+      "status": "approved",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-14T12:00:00.000Z",
+      "updatedAt": "2026-06-19T15:30:00.000Z",
+      "reviewedBy": "adm-002",
+      "reviewedAt": "2026-06-19T15:30:00.000Z"
+    },
+    {
+      "id": "tsk-012",
+      "title": "Sunucu erişim yetkisi — staging",
+      "description": "Staging ortamına deploy testi için geçici SSH erişimi.",
+      "priority": "high",
+      "category": "Teknik Destek",
+      "status": "rejected",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-19T10:00:00.000Z",
+      "updatedAt": "2026-06-23T10:30:00.000Z",
+      "reviewedBy": "adm-001",
+      "reviewedAt": "2026-06-23T10:30:00.000Z",
+      "rejectionReason": "Staging erişimi için önce güvenlik eğitimi sertifikası gereklidir. Sertifika tamamlandıktan sonra yeniden talep açınız."
+    },
+    {
+      "id": "tsk-013",
+      "title": "Erken çıkış izni",
+      "description": "Bugün 16:00'da çıkmam gerekiyor, 2 saatlik esnek izin.",
+      "priority": "normal",
+      "category": "İzin Talebi",
+      "status": "rejected",
+      "createdBy": "usr-003",
+      "createdAt": "2026-06-23T07:30:00.000Z",
+      "updatedAt": "2026-06-23T12:00:00.000Z",
+      "reviewedBy": "adm-002",
+      "reviewedAt": "2026-06-23T12:00:00.000Z",
+      "rejectionReason": "Ekip toplantısı 16:00-17:00 arasında zorunlu katılım. Alternatif tarih öneriniz."
+    },
+    {
+      "id": "tsk-014",
+      "title": "Kulaklık satın alma",
+      "description": "Toplantılar için gürültü önleyici kulaklık talebi.",
+      "priority": "low",
+      "category": "Satın Alma",
+      "status": "rejected",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-16T11:30:00.000Z",
+      "updatedAt": "2026-06-20T09:00:00.000Z",
+      "reviewedBy": "adm-001",
+      "reviewedAt": "2026-06-20T09:00:00.000Z",
+      "rejectionReason": "Q2 donanım bütçesi dolmuştur. Q3 başında yeniden değerlendirilecektir."
+    },
+    {
+      "id": "tsk-015",
+      "title": "Jira proje erişimi",
+      "description": "MARKETPLACE projesine developer erişimi.",
+      "priority": "normal",
+      "category": "Teknik Destek",
+      "status": "rejected",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-12T08:45:00.000Z",
+      "updatedAt": "2026-06-18T14:15:00.000Z",
+      "reviewedBy": "adm-002",
+      "reviewedAt": "2026-06-18T14:15:00.000Z",
+      "rejectionReason": "Proje yöneticisinden onay maili eklenmeden erişim verilemez."
+    },
+    {
+      "id": "tsk-016",
+      "title": "Toplantı odası rezervasyon sistemi hatası",
+      "description": "Oda rezervasyonu yapılamıyor, ekran görüntüsü ektedir.",
+      "priority": "high",
+      "category": "Teknik Destek",
+      "status": "approved",
+      "createdBy": "usr-003",
+      "createdAt": "2026-06-23T06:50:00.000Z",
+      "updatedAt": "2026-06-23T07:40:00.000Z",
+      "reviewedBy": "adm-001",
+      "reviewedAt": "2026-06-23T07:40:00.000Z"
+    },
+    {
+      "id": "tsk-017",
+      "title": "Yemek kartı bakiye yükleme",
+      "description": "Haziran ayı yemek kartı bakiyesinin yüklenmesi.",
+      "priority": "urgent",
+      "category": "Diğer",
+      "status": "pending",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-23T06:30:00.000Z",
+      "updatedAt": "2026-06-23T06:30:00.000Z"
+    },
+    {
+      "id": "tsk-018",
+      "title": "Sertifika masrafı geri ödeme",
+      "description": "AWS SAA sınav ücreti için masraf iadesi talebi. Fatura ektedir.",
+      "priority": "normal",
+      "category": "Diğer",
+      "status": "approved",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-10T10:00:00.000Z",
+      "updatedAt": "2026-06-23T13:00:00.000Z",
+      "reviewedBy": "adm-001",
+      "reviewedAt": "2026-06-23T13:00:00.000Z"
+    }
+  ],
+  "dashboardStats": {
+    "userPanel": {
+      "description": "Opsiyonel — aday stats'ı task listesinden de hesaplayabilir. userId ile filtrelenir.",
+      "exampleForUser": "usr-001",
+      "total": 7,
+      "pending": 3,
+      "approved": 3,
+      "rejected": 1
+    },
+    "adminPanel": {
+      "description": "Opsiyonel — 2026-06-23 (bugün) bazlı örnek",
+      "pendingTotal": 7,
+      "approvedToday": 4,
+      "rejectedToday": 2,
+      "priorityDistribution": {
+        "low": 2,
+        "normal": 6,
+        "high": 4,
+        "urgent": 2
+      }
+    }
+  },
+  "enums": {
+    "priority": ["low", "normal", "high", "urgent"],
+    "priorityLabels": {
+      "low": "Düşük",
+      "normal": "Normal",
+      "high": "Yüksek",
+      "urgent": "Acil"
+    },
+    "category": ["Teknik Destek", "İzin Talebi", "Satın Alma", "Diğer"],
+    "status": ["pending", "approved", "rejected"],
+    "statusLabels": {
+      "pending": "Bekliyor",
+      "approved": "Onaylandı",
+      "rejected": "Reddedildi"
+    },
+    "adminRole": ["Admin", "Moderator", "Viewer"]
+  }
+}

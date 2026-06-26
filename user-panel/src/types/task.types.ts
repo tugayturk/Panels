@@ -1,0 +1,30 @@
+export type TaskStatus = "pending" | "approved" | "rejected";
+
+export type TaskPriority = "low" | "normal" | "high" | "urgent";
+
+export interface Task {
+  id: string;
+  title: string;
+  description: string;
+  priority: TaskPriority;
+  category: string;
+  status: TaskStatus;
+  createdBy: string;
+  createdAt: string;
+  updatedAt?: string;
+  rejectionReason?: string;
+  reviewedAt?:string;
+  reviewedBy?:string;
+}
+
+export interface DashboardStats {
+  total: number;
+  pending: number;
+  approved: number;
+  rejected: number;
+}
+
+export interface DashboardData {
+  stats: DashboardStats;
+  recentTasks: Task[];
+}
