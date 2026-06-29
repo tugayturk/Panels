@@ -7,7 +7,8 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  user: null,
+  // Sayfa yenilendiğinde oturumu korumak için localStorage'dan oku
+  user: JSON.parse(localStorage.getItem("user") || "null"),
   error: null,
 };
 
@@ -22,15 +23,18 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.error = null;
       localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
     },
     loginFail: (state, action: PayloadAction<string>) => {
       state.user = null;
       state.error = action.payload;
+      localStorage.removeItem("user");
     },
     logout: (state) => {
       state.user = null;
       state.error = null;
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
     },
   },
 });

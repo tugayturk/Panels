@@ -1,0 +1,159 @@
+{
+  "menu": {
+    "dashboard": "Dashboard",
+    "pendingRequests": "Bekleyen Talepler",
+    "allRequests": "Tüm Talepler",
+    "userManagement": "Kullanıcı Yönetimi"
+  },
+  "common": {
+    "logout": "Çıkış",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "confirm": "Onayla",
+    "reject": "Reddet",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "reset": "Sıfırla",
+    "close": "Kapat",
+    "add": "Ekle",
+    "delete": "Sil",
+    "update": "Güncelle",
+    "actions": "İşlemler",
+    "noPermission": "Yetkiniz yoktur",
+    "loading": "Yükleniyor...",
+    "yes": "Evet",
+    "no": "Hayır",
+    "records": "kayıt"
+  },
+  "login": {
+    "welcome": "Hoş Geldiniz",
+    "subtitle": "Hesabınıza giriş yapın",
+    "email": "Email Adresi",
+    "emailPlaceholder": "örnek@email.com",
+    "password": "Şifre",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Giriş Yap",
+    "loading": "Giriş yapılıyor...",
+    "footer": "© 2026 Beymen - Admin Kontrol Paneli",
+    "brandName": "Case",
+    "brandTagline": "Admin Kontrol Paneli",
+    "brandDesc": "Kontrol paneli ile tüm taleplerinizi takip edin.",
+    "badge1": "Talepler",
+    "badge2": "Kullanıcı Yönetimi",
+    "badge3": "İstatistikler"
+  },
+  "dashboard": {
+    "welcome": "Hoş geldin, {{name}} 👋",
+    "subtitle": "Özet istatistikler burada gösterilecek.",
+    "pendingRequests": "Bekleyen Talepler",
+    "approvedToday": "Bugün Onaylanan",
+    "rejectedToday": "Bugün Reddedilen",
+    "priorityStats": "Öncelik Dağılımı",
+    "recentRequests": "Son Talepler",
+    "requestCount": "{{count}} talep",
+    "footerText": "Son 5 talep gösteriliyor. Tümü için",
+    "footerLink": "tıklayınız",
+    "noData": "Henüz talep bulunmuyor."
+  },
+  "table": {
+    "title": "Başlık",
+    "user": "Kullanıcı",
+    "category": "Kategori",
+    "priority": "Öncelik",
+    "status": "Durum",
+    "createdAt": "Oluşturulma",
+    "requestDate": "Talep Tarihi",
+    "actions": "İşlemler",
+    "description": "Açıklama",
+    "role": "Rol",
+    "email": "Email",
+    "name": "Adı",
+    "searchUser": "Kullanıcı Ara",
+    "searchField": "{{field}} Ara",
+    "selectDate": "Tarih seçiniz"
+  },
+  "priority": {
+    "low": "Düşük",
+    "normal": "Normal",
+    "high": "Yüksek",
+    "urgent": "Acil"
+  },
+  "status": {
+    "pending": "Bekliyor",
+    "approved": "Onaylandı",
+    "rejected": "Reddedildi"
+  },
+  "category": {
+    "technicalSupport": "Teknik Destek",
+    "leaveRequest": "İzin Talebi",
+    "purchase": "Satın Alma",
+    "other": "Diğer"
+  },
+  "taskDetail": {
+    "modalTitle": "Talep Detayı",
+    "description": "Açıklama",
+    "priority": "Öncelik",
+    "category": "Kategori",
+    "status": "Durum",
+    "createdAt": "Oluşturulma",
+    "updatedAt": "Güncellenme",
+    "user": "Kullanıcı",
+    "rejectionReason": "Red Nedeni"
+  },
+  "pendingRequests": {
+    "pageTitle": "Bekleyen Talepler",
+    "pageSubtitle": "Onay bekleyen talepler burada listelenecek.",
+    "approveConfirm": "Bu talebi onayla?",
+    "rejectModalTitle": "Reddetme Sebebini giriniz",
+    "rejectReasonPlaceholder": "Red sebebini yazınız...",
+    "rejectReasonRequired": "Lütfen red sebebini giriniz.",
+    "rejectReasonMinLength": "Red sebebi en az 3 karakter olmalıdır.",
+    "approveSuccess": "Talebi onayladınız.",
+    "approveError": "Talebi onaylayamadınız.",
+    "rejectSuccess": "Talebi reddettiniz.",
+    "rejectError": "Talebi reddedemezsiniz.",
+    "footerTotal": "Bekleyen Talepler: {{count}}"
+  },
+  "allRequests": {
+    "pageTitle": "Tüm Talepler",
+    "footerApproved": "Onaylanan: {{count}}",
+    "footerRejected": "Reddedilen: {{count}}",
+    "footerPending": "Bekleyen: {{count}}",
+    "paginationTotal": "{{start}}-{{end}} / {{total}} kayıt"
+  },
+  "userManagement": {
+    "pageTitle": "Kullanıcı Yönetimi",
+    "addUser": "Kullanıcı Ekle",
+    "deleteConfirmTitle": "Silmek istediğinize emin misiniz?",
+    "deleteConfirmDesc": "Bu işlem geri alınamaz.",
+    "deleteSuccess": "Kullanıcı başarıyla silindi",
+    "deleteError": "Kullanıcı silinemedi",
+    "deleteTooltip": "Sil",
+    "updateTooltip": "Güncelle"
+  },
+  "addUserModal": {
+    "titleAdd": "Kullanıcı Ekle",
+    "titleUpdate": "Kullanıcı Güncelle",
+    "nameLabel": "Ad Soyad",
+    "namePlaceholder": "Örn. Ahmet Yılmaz",
+    "nameError": "İsim en az 2 karakter",
+    "emailLabel": "E-posta",
+    "emailPlaceholder": "ornek@sirket.com",
+    "emailError": "Geçerli bir email gir",
+    "passwordLabel": "Şifre",
+    "passwordPlaceholder": "En az 6 karakter",
+    "passwordError": "Şifre en az 6 karakter",
+    "roleLabel": "Rol",
+    "addSuccess": "Kullanıcı başarıyla eklendi",
+    "updateSuccess": "Kullanıcı başarıyla güncellendi",
+    "genericError": "İşlem sırasında bir hata oluştu"
+  },
+  "unauthorized": {
+    "title": "403",
+    "subtitle": "Bu sayfaya erişim yetkiniz bulunmamaktadır.",
+    "backHome": "Ana Sayfaya Dön"
+  },
+  "footer": {
+    "adminPanel": "Admin Panel ©{{year}}"
+  }
+}

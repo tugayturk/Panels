@@ -1,15 +1,16 @@
-import { ConfigProvider, theme as antdTheme } from "antd";
+import { ConfigProvider, theme as antTheme } from "antd";
 import App from "./App";
 import { useTheme } from "../context/ThemeContext";
-import { lightTheme } from "../theme/lightTheme";
-import { darkTheme } from "../theme/darkTheme";
+
 export function AppProviders() {
   const { theme } = useTheme();
-  const isDark = theme === "dark" ? true : false;
+  const isDark = theme === "dark";
 
   return (
     <ConfigProvider
-    theme={isDark ? darkTheme : lightTheme}
+      theme={{
+        algorithm: isDark ? antTheme.darkAlgorithm : antTheme.defaultAlgorithm,
+      }}
     >
       <App />
     </ConfigProvider>

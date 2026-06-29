@@ -4,27 +4,27 @@ import { loginFail, loginSuccess } from "../../store/slices/authSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
 import { loginService } from "../../services/auth.service";
-
+import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 export function Login() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
   const { error } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
     try {
       const data = await loginService(email, password);
       dispatch(loginSuccess(data));
       navigate("/dashboard");
     } catch (err) {
-      dispatch(
-        loginFail(err instanceof Error ? err.message : "Login failed")
-      );
+      dispatch(loginFail(err instanceof Error ? err.message : "Login failed"));
     } finally {
       setLoading(false);
     }
@@ -32,37 +32,79 @@ export function Login() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.card}>
-        <h1 className={styles.title}>Login</h1>
+      {/* Sol: Form */}
+      <motion.div
+        className={styles.left}
+        initial={{ x: -60, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <h1 className={styles.welcome}>{t("login.welcome")}</h1>
+        <p className={styles.subtitle}>{t("login.subtitle")}</p>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputGroup}>
-            <label>Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter email"
-            />
+            <label>{t("login.email")}</label>
+            <div className={styles.inputWrapper}>
+              <span className={styles.inputIcon}>✉</span>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={t("login.emailPlaceholder")}
+                required
+              />
+            </div>
           </div>
 
           <div className={styles.inputGroup}>
-            <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
-            />
+            <label>{t("login.password")}</label>
+            <div className={styles.inputWrapper}>
+              <span className={styles.inputIcon}>🔒</span>
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder={t("login.passwordPlaceholder")}
+                required
+              />
+              <button
+                type="button"
+                className={styles.eyeToggle}
+                onClick={() => setShowPassword((v) => !v)}
+                tabIndex={-1}
+              >
+                {showPassword ? "🙈" : "👁"}
+              </button>
+            </div>
           </div>
 
           {error && <p className={styles.error}>{error}</p>}
 
           <button type="submit" className={styles.button} disabled={loading}>
-            {loading ? "Signing in..." : "Sign In"}
+            {loading ? t("login.loading") : <>⟳ {t("login.submit")}</>}
           </button>
         </form>
-      </div>
+
+        <p className={styles.footer}>{t("login.footer")}</p>
+        </motion.div>
+
+      {/* Sağ: Marka */}
+      <motion.div
+        className={styles.right}
+        initial={{ x: 60, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <p className={styles.brandName}>{t("login.brandName")}</p>
+        <p className={styles.brandTagline}>{t("login.brandTagline")}</p>
+        <p className={styles.brandDesc}>{t("login.brandDesc")}</p>
+        <div className={styles.badges}>
+          <span className={styles.badge}>{t("login.badge1")}</span>
+          <span className={styles.badge}>{t("login.badge2")}</span>
+          <span className={styles.badge}>{t("login.badge3")}</span>
+        </div>
+        </motion.div>
     </div>
   );
 }

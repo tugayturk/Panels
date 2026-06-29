@@ -1,5 +1,6 @@
 import type { TaskPriority, TaskStatus } from "../types/task.types";
 
+// Talep öncelik/durum etiketleri ve renkleri — tüm admin panelde tek kaynak
 export type SelectOption<T extends string = string> = {
   value: T;
   label: string;
@@ -13,6 +14,7 @@ export const priorityLabels: Record<TaskPriority, string> = {
   urgent: "Acil",
 };
 
+// Ant Design <Tag color="..."> için preset renkler
 export const priorityTagColors: Record<TaskPriority, string> = {
   low: "default",
   normal: "blue",
@@ -20,6 +22,7 @@ export const priorityTagColors: Record<TaskPriority, string> = {
   urgent: "red",
 };
 
+// Progress bar, metin vb. özel UI için hex renkler
 export const priorityTextColors: Record<TaskPriority, string> = {
   low: "#8c8c8c",
   normal: "#1677ff",
@@ -39,4 +42,22 @@ export const statusTagColors: Record<TaskStatus, string> = {
   rejected: "red",
 };
 
+export const categoryTextColors: Record<string, string> = {
+  "Teknik Destek": "#1677ff",
+  "İzin Talebi": "#52c41a",
+  "Satın Alma": "#fa8c16",
+  Diğer: "#8c8c8c",
+};
 
+export const categoryTagColors: Record<string, string> = {
+  "Teknik Destek": "#1677ff",
+  "İzin Talebi": "#52c41a",
+  "Satın Alma": "#fa8c16",
+  Diğer: "#8c8c8c",
+};
+export const categoryLabels: Record<string, string> = {
+  "Teknik Destek": "Teknik Destek",
+  "İzin Talebi": "İzin Talebi",
+  "Satın Alma": "Satın Alma",
+  Diğer: "Diğer",
+};

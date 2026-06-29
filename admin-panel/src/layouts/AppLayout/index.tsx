@@ -2,40 +2,46 @@ import {
   DashboardOutlined,
   FileTextOutlined,
   LogoutOutlined,
+  MenuOutlined,
+  MoonOutlined,
+  SunOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, theme, Typography } from "antd";
+import { Button, Drawer, Layout, Menu, Switch, theme } from "antd";
+import { useState } from "react";
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { logout } from "../../store/slices/authSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useTheme } from "../../context/ThemeContext";
 import styles from "./AppLayout.module.scss";
-import { Role } from "../../types";
-
+import LanguageSwitcher from "../../components/LanguageSwitcher";
+import { ROUTES } from "../../routes/paths";
 const { Header, Sider, Content, Footer } = Layout;
 
-const menuItems = [
+const menuDefs = [
   {
     key: "dashboard",
     icon: <DashboardOutlined />,
-    label: "Dashboard",
+    labelKey: "menu.dashboard",
     roles: ["Admin", "Moderator", "Viewer"],
   },
   {
     key: "talepler",
     icon: <FileTextOutlined />,
-    label: "Bekleyen Talepler",
+    labelKey: "menu.pendingRequests",
     roles: ["Admin", "Moderator", "Viewer"],
   },
   {
-    key: "tüm-talepler",
+    key: "tum-talepler",
     icon: <FileTextOutlined />,
-    label: "Tüm Talepler",
+    labelKey: "menu.allRequests",
     roles: ["Admin", "Moderator"],
   },
   {
     key: "kullanici-yonetimi",
     icon: <UserOutlined />,
-    label: "Kullanıcı Yönetimi",
+    labelKey: "menu.userManagement",
     roles: ["Admin"],
   },
 ];
@@ -53,55 +59,105 @@ const siderStyle: React.CSSProperties = {
 
 export function AppLayout() {
   const { user } = useAppSelector((state) => state.auth);
+  const { isDark, toggleTheme } = useTheme();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={ROUTES.login} replace />;
   }
 
-  const filteredMenu = menuItems.filter((item) =>
-    item.roles.includes(user.role)
-  );
+  // Role göre filtrele ve label'ları çevir
+  const filteredMenu = menuDefs
+    .filter((item) => item.roles.includes(user.role))
+    .map((item) => ({ key: item.key, icon: item.icon, label: t(item.labelKey) }));
 
+  // URL'den aktif menü key'ini al (örn. /talepler → "talepler")
   const selectedKey = location.pathname.split("/")[1] || "dashboard";
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/login");
+    navigate(ROUTES.login);
+  };
+
+  const handleMenuClick = ({ key }: { key: string }) => {
+    navigate(`/${key}`);
+    setMobileMenuOpen(false);
   };
 
   return (
     <Layout hasSider>
-      <Sider style={siderStyle}>
+      <Sider
+        style={siderStyle}
+        breakpoint="lg"
+        collapsedWidth={0}
+        onBreakpoint={(broken) => setIsMobile(broken)}
+      >
         <div className={styles.logo}>Admin Panel</div>
         <Menu
           theme="dark"
           mode="inline"
           selectedKeys={[selectedKey]}
           items={filteredMenu}
-          onClick={({ key }) => navigate(`/${key}`)}
+          onClick={handleMenuClick}
         />
       </Sider>
+
+      {/* Mobil drawer menü */}
+      <Drawer
+        title="Admin Panel"
+        placement="left"
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        width={220}
+        styles={{ body: { padding: 0 } }}
+      >
+        <Menu
+          mode="inline"
+          selectedKeys={[selectedKey]}
+          items={filteredMenu}
+          onClick={handleMenuClick}
+          style={{ borderRight: 0 }}
+        />
+      </Drawer>
+
       <Layout>
         <Header
           className={styles.header}
           style={{ background: colorBgContainer }}
         >
-          <Typography.Text strong>{user.name}</Typography.Text>
-          <Button
-            type="text"
-            icon={<LogoutOutlined />}
-            onClick={handleLogout}
-          >
-            Çıkış
-          </Button>
+          <div className={styles.headerLeft}>
+            {isMobile && (
+              <Button
+                type="text"
+                icon={<MenuOutlined />}
+                onClick={() => setMobileMenuOpen(true)}
+              />
+            )}
+            <div className={styles.userName}>{user.name}</div>
+          </div>
+          <div className={styles.headerRight}>
+            <SunOutlined style={{ fontSize: 14, color: isDark ? "#888" : "#faad14" }} />
+            <Switch size="small" checked={isDark} onChange={toggleTheme} />
+            <MoonOutlined style={{ fontSize: 14, color: isDark ? "#a78bfa" : "#888" }} />
+
+            <LanguageSwitcher />
+
+
+            <Button type="text" icon={<LogoutOutlined />} onClick={handleLogout}>
+              {t("common.logout")}
+            </Button>
+          </div>
         </Header>
-        <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
+     
+        <Content style={{ margin: "24px 16px 0", overflow: "auto" }}>
           <div
             style={{
               padding: 24,
@@ -114,7 +170,7 @@ export function AppLayout() {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Admin Panel ©{new Date().getFullYear()}
+          {t("footer.adminPanel", { year: new Date().getFullYear() })}
         </Footer>
       </Layout>
     </Layout>

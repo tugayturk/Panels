@@ -1,0 +1,47 @@
+.loading {
+    display: flex;
+    justify-content: center;
+    padding: 32px 0;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .descriptionBox {
+    padding: 12px 14px;
+    background: #f8f9fb;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #cf1322;
+  }
+  
+  .description {
+    margin: 0 !important;
+    color: rgba(0, 0, 0, 0.88);
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+  
+  .descriptions {
+    :global(.ant-descriptions-item-label) {
+      width: 140px;
+      font-weight: 500;
+      background: #fafafa;
+    }
+  }
+  
+  .rejectionReason {
+    color: #cf1322;
+  }
+  

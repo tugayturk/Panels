@@ -18,5 +18,8 @@ export interface Task {
   status: TaskStatus;
   createdBy: string;
   createdAt: string;
+  updatedAt?: string;
   rejectionReason?: string;
+  reviewedAt?:string;
+  reviewedBy?:string;
 }

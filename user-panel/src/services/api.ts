@@ -1,9 +1,11 @@
 import axios, { AxiosError } from "axios";
 
+// Ortak axios instance — baseURL .env'den okunur (REACT_APP_BASE_API_URL)
 const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_API_URL ?? "http://localhost:3001",
 });
 
+// İstek öncesi token'ı header'a ekle
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
@@ -12,6 +14,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Yetkisiz yanıtta oturumu kapat ve login'e yönlendir
 api.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {

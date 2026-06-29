@@ -1,3 +1,5 @@
-.bekleyen {
-    color: #faad14;
+@use "../../styles/mixins" as *;
+
+.dashboardCard {
+  @include dashboard-card;
 }

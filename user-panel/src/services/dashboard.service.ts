@@ -1,6 +1,7 @@
 import type { DashboardData, Task } from "../types/task.types";
 import api from "./api";
 
+// Dashboard istatistiklerini istemci tarafında hesaplar (toplam, durum dağılımı, son 5)
 export const dashboardService = async (userId: string): Promise<DashboardData> => {
   const response = await api.get<Task[]>("/tasks");
   const userTasks = response.data.filter((task) => task.createdBy === userId);
@@ -17,7 +18,7 @@ export const dashboardService = async (userId: string): Promise<DashboardData> =
       (a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     )
-    .slice(0, 5);
+    .slice(0, 5); // En yeni 5 talep
 
   return { stats, recentTasks };
 };

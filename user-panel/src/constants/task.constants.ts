@@ -1,5 +1,6 @@
 import type { TaskPriority, TaskStatus } from "../types/task.types";
 
+// Talep etiketleri, renkleri ve form seçenekleri — user panel genel sabitleri
 export type SelectOption<T extends string = string> = {
   value: T;
   label: string;
@@ -13,6 +14,7 @@ export const priorityLabels: Record<TaskPriority, string> = {
   urgent: "Acil",
 };
 
+// <Tag> bileşeni için Ant Design preset renkleri
 export const priorityTagColors: Record<TaskPriority, string> = {
   low: "default",
   normal: "blue",
@@ -20,6 +22,7 @@ export const priorityTagColors: Record<TaskPriority, string> = {
   urgent: "red",
 };
 
+// Select, Progress ve düz metin için hex renkler
 export const priorityTextColors: Record<TaskPriority, string> = {
   low: "#8c8c8c",
   normal: "#1677ff",
@@ -53,6 +56,7 @@ export const categoryTextColors: Record<string, string> = {
   Diğer: "#8c8c8c",
 };
 
+// Form Select bileşenlerinde kullanılmak üzere öncelik seçenekleri
 export const priorityOptions: SelectOption<TaskPriority>[] = (
   Object.keys(priorityLabels) as TaskPriority[]
 ).map((value) => ({

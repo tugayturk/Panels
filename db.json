@@ -52,6 +52,13 @@
       "email": "viewer@test.com",
       "password": "viewer123",
       "role": "Viewer"
+    },
+    {
+      "id": "8nH5WnqN93A",
+      "name": "ahmet ali ",
+      "email": "i.tugayturktest@gmail.com",
+      "role": "Moderator",
+      "password": "12345555"
     }
   ],
   "tasks": [
@@ -285,9 +292,11 @@
       "description": "yeni talepler",
       "priority": "normal",
       "category": "İzin Talebi",
-      "status": "pending",
+      "status": "rejected",
       "createdBy": "usr-001",
-      "createdAt": "2026-06-26T13:31:59.485Z"
+      "createdAt": "2026-06-26T13:31:59.485Z",
+      "rejectionReason": "bu tarihler için izin alamazsınız",
+      "updatedAt": "2026-06-27T19:59:41.586Z"
     },
     {
       "id": "Uda4DShzRo0",
@@ -295,9 +304,234 @@
       "description": "başlık",
       "priority": "low",
       "category": "Teknik Destek",
+      "status": "approved",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-26T13:35:45.760Z",
+      "updatedAt": "2026-06-27T19:57:17.120Z"
+    },
+    {
+      "id": "32DF5I_x1D0",
+      "title": "başlık3",
+      "description": "açıklama2",
+      "priority": "low",
+      "category": "Diğer",
+      "status": "rejected",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-27T15:05:49.291Z",
+      "rejectionReason": "red sebebi",
+      "updatedAt": "2026-06-27T19:56:36.749Z"
+    },
+    {
+      "id": "rkP-EZMv0lE",
+      "title": "doğum günü izni",
+      "description": "doğum günüm olan 17 temmuzda 1 günlük izne çıkmak istiyorum",
+      "priority": "high",
+      "category": "İzin Talebi",
+      "status": "approved",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-27T20:45:09.866Z",
+      "updatedAt": "2026-06-27T20:45:23.912Z"
+    },
+    {
+      "id": "xt4kxXDwLY0",
+      "title": "yıllık izin",
+      "description": "yıllık iznimin 1 haftası",
+      "priority": "low",
+      "category": "İzin Talebi",
+      "status": "rejected",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-27T20:45:40.782Z",
+      "rejectionReason": "tarih uygun değil",
+      "updatedAt": "2026-06-27T20:45:52.647Z"
+    },
+    {
+      "id": "aLyLaFnh6t4",
+      "title": "iş talebi",
+      "description": "işe alıkm",
+      "priority": "normal",
+      "category": "Diğer",
+      "status": "rejected",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-27T20:53:11.670Z",
+      "rejectionReason": "işe alınmadı",
+      "updatedAt": "2026-06-27T20:53:39.932Z"
+    },
+    {
+      "id": "AS8R2a7fKa4",
+      "title": "izizn",
+      "description": "yıllık izin",
+      "priority": "normal",
+      "category": "İzin Talebi",
+      "status": "approved",
+      "createdBy": "usr-001",
+      "createdAt": "2026-06-28T10:55:57.050Z",
+      "updatedAt": "2026-06-28T10:56:34.588Z"
+    },
+    {
+      "id": "T0362Wbxbvg",
+      "title": "yıllık izin talebi",
+      "description": "3 gün",
+      "priority": "normal",
+      "category": "İzin Talebi",
       "status": "pending",
       "createdBy": "usr-001",
-      "createdAt": "2026-06-26T13:35:45.760Z"
+      "createdAt": "2026-06-28T11:11:57.961Z"
+    },
+    {
+      "id": "Q1rAuJbn4Bg",
+      "title": "Donanım Değişim Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "approved",
+      "priority": "low",
+      "category": "İnsan Kaynakları",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T11:36:01.846Z",
+      "updatedAt": "2026-06-29T12:36:44.616Z"
+    },
+    {
+      "id": "bj5xJb8IdIE",
+      "title": "Teknik Destek Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "rejected",
+      "priority": "high",
+      "category": "İnsan Kaynakları",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:17:48.231Z",
+      "updatedAt": "2026-06-29T12:36:29.372Z",
+      "rejectionReason": "onaylanmadı"
+    },
+    {
+      "id": "xV5dNdwOQ_E",
+      "title": "Donanım Değişim Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "rejected",
+      "priority": "normal",
+      "category": "Finans",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:18:12.567Z",
+      "updatedAt": "2026-06-29T12:36:40.362Z",
+      "rejectionReason": "onaylanmadı"
+    },
+    {
+      "id": "lTYnptmPWlw",
+      "title": "İzin Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "low",
+      "category": "Finans",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:18:46.289Z",
+      "updatedAt": "2026-06-29T12:18:46.289Z"
+    },
+    {
+      "id": "AERdSI0KSHE",
+      "title": "Teknik Destek Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "low",
+      "category": "İnsan Kaynakları",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:19:09.292Z",
+      "updatedAt": "2026-06-29T12:19:09.292Z"
+    },
+    {
+      "id": "Uhk_q_iUhi0",
+      "title": "İzin Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "normal",
+      "category": "Genel",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:26:08.959Z",
+      "updatedAt": "2026-06-29T12:26:08.959Z"
+    },
+    {
+      "id": "lo362GQ8EhE",
+      "title": "Sistem Erişim Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "normal",
+      "category": "İnsan Kaynakları",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:26:33.354Z",
+      "updatedAt": "2026-06-29T12:26:33.354Z"
+    },
+    {
+      "id": "zSYQcbo_MMo",
+      "title": "Donanım Değişim Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "normal",
+      "category": "Finans",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:29:16.109Z",
+      "updatedAt": "2026-06-29T12:29:16.109Z"
+    },
+    {
+      "id": "rICKgShemvQ",
+      "title": "Sistem Erişim Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "high",
+      "category": "Genel",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:34:35.523Z",
+      "updatedAt": "2026-06-29T12:34:35.523Z"
+    },
+    {
+      "id": "ZSpyoucpVhE",
+      "title": "Teknik Destek Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "low",
+      "category": "Teknik Destek",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:34:55.523Z",
+      "updatedAt": "2026-06-29T12:34:55.524Z"
+    },
+    {
+      "id": "dUIixB_FdBI",
+      "title": "Teknik Destek Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "high",
+      "category": "Finans",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:35:18.602Z",
+      "updatedAt": "2026-06-29T12:35:18.602Z"
+    },
+    {
+      "id": "x6fPmV76tos",
+      "title": "Donanım Değişim Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "normal",
+      "category": "İnsan Kaynakları",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:36:03.073Z",
+      "updatedAt": "2026-06-29T12:36:03.073Z"
+    },
+    {
+      "id": "jLBlI2Qjuvo",
+      "title": "İzin Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "low",
+      "category": "Teknik Destek",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:36:35.728Z",
+      "updatedAt": "2026-06-29T12:36:35.728Z"
+    },
+    {
+      "id": "MqBjtVQInmw",
+      "title": "Donanım Değişim Talebi",
+      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
+      "status": "pending",
+      "priority": "urgent",
+      "category": "Finans",
+      "createdBy": "usr-002",
+      "createdAt": "2026-06-29T12:40:54.062Z",
+      "updatedAt": "2026-06-29T12:40:54.062Z"
     }
   ],
   "dashboardStats": {

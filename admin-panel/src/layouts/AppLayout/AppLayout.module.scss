@@ -1,18 +1,47 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
 .logo {
   height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+  @include flex-center;
   font-weight: 600;
   font-size: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: $logo-font;
+  color: $logo-color;
+  font-style: $logo-style;
+  letter-spacing: 1px
+}
+.userName {
+  font-family: $user-font;
+  color: $user-color;
+  font-style: $user-style;
+  letter-spacing: $user-letter-spacing;
+  font-size: $user-font-size;
 }
 
 .header {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
+  justify-content: space-between;
   padding: 0 24px !important;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+  .header {
+    padding: 0 12px !important;
+  }
 }

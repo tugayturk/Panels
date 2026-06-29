@@ -1,79 +1,242 @@
+@use "../../styles/mixins" as *;
+
 .container {
-    height: 100vh;
+  min-height: 100vh;
+  display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+/* ── Sol panel (form) ── */
+.left {
+  flex: 0 0 40%;
+  @include flex-center;
+  flex-direction: column;
+  padding: 0 48px;
+  background: #fff;
+
+  @media (max-width: 768px) {
+    flex: 1;
+    padding: 40px 24px;
+  }
+}
+
+.welcome {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 6px;
+  width: 320px;
+
+  @media (max-width: 768px) {
+    font-size: 26px;
+    width: 100%;
+  }
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #888;
+  margin: 0 0 36px;
+  width: 320px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 320px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+  }
+
+  .inputWrapper {
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: #f4f6f9;
-  }
-  
-  .card {
-    width: 360px;
-    padding: 32px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  }
-  
-  .title {
-    text-align: center;
-    margin-bottom: 24px;
-    font-size: 24px;
-    font-weight: 600;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .inputGroup {
-    display: flex;
-    flex-direction: column;
-  
-    label {
-      font-size: 13px;
-      margin-bottom: 6px;
-      color: #555;
+
+    .inputIcon {
+      position: absolute;
+      left: 12px;
+      color: #bbb;
+      font-size: 15px;
+      pointer-events: none;
     }
-  
+
     input {
-      padding: 10px 12px;
-      border: 1px solid #ddd;
+      width: 100%;
+      padding: 11px 12px 11px 36px;
+      border: 1px solid #e0e0e0;
       border-radius: 8px;
+      font-size: 14px;
       outline: none;
-      transition: 0.2s;
-  
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: #bbb;
+      }
+
       &:focus {
-        border-color: #4f46e5;
-        box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+        border-color: #1e3a8a;
+        box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+      }
+    }
+
+    .eyeToggle {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #bbb;
+      padding: 0;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: #888;
       }
     }
   }
-  
-  .button {
-    margin-top: 8px;
-    padding: 10px;
-    background: #4f46e5;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.2s;
+}
 
-    &:hover {
-      background: #4338ca;
-    }
+.button {
+  margin-top: 4px;
+  padding: 12px;
+  background: #1e3a8a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  @include flex-center;
+  gap: 8px;
+  transition: background 0.2s;
 
-    &:disabled {
-      background: #a5a5a5;
-      cursor: not-allowed;
-    }
+  &:hover:not(:disabled) {
+    background: #1e40af;
   }
 
-  .error {
-    margin: 0;
-    font-size: 13px;
-    color: #dc2626;
+  &:disabled {
+    background: #93c5fd;
+    cursor: not-allowed;
   }
+}
+
+.error {
+  margin: 0;
+  font-size: 13px;
+  color: #dc2626;
+}
+
+.footer {
+  margin-top: 40px;
+  font-size: 12px;
+  color: #bbb;
+  text-align: center;
+  width: 320px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+/* ── Sağ panel (marka) ── */
+.right {
+  flex: 1;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+  background: linear-gradient(145deg, #08237D 0%, #1e40af 50%, #2563eb 100%);
+  @include flex-center;
+  flex-direction: column;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    top: -120px;
+    right: -120px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    bottom: -80px;
+    left: -80px;
+  }
+}
+
+.brandName {
+  font-size: 48px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+  margin: 0 0 8px;
+}
+
+.brandTagline {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 20px;
+}
+
+.brandDesc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: center;
+  max-width: 340px;
+  line-height: 1.7;
+  margin: 0 0 36px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.badge {
+  padding: 8px 18px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.06);
+}

@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Flex, Progress, Row, Statistic,Table, Tag, Tooltip, Typography } from "antd";
+import { Card, Col, Flex, Progress, Row, Statistic, Table, Tag, Tooltip } from "antd";
 import moment from "moment";
 import { getDashboardData } from "../../services/dashboard.service";
 import {
-  priorityLabels,
   priorityTagColors,
   priorityTextColors,
-  statusLabels,
   statusTagColors,
-} from "../../constants/task.constant";
+} from "../../constants/task.constants";
 import { Task, TaskPriority, TaskStatus } from "../../types/task.types";
 import { useAppSelector } from "../../store/hooks";
 import styles from "./Dashboard.module.scss";
 import { ColumnsType } from "antd/es/table";
+import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
+import { ROUTES } from "../../routes/paths";
 
+// Admin dashboard: bekleyen talepler, istatistik kartları ve öncelik dağılımı
 export default function Dashboard() {
   const [data, setData] = useState<Task[]>([]);
   const user = useAppSelector((state) => state.auth.user);
+  const { t } = useTranslation();
 
   useEffect(() => {
+    // Tüm talepleri çeker; sayımlar aşağıda durum bazında hesaplanır
     const fetchDashboardData = async () => {
       const data = await getDashboardData();
       setData(data);
@@ -26,20 +31,24 @@ export default function Dashboard() {
     fetchDashboardData();
   }, []);
 
+  // Özet kartlar için sayımlar — "bugün" kontrolü inceleme/güncelleme tarihine
+  // göre yapılır (talep dün açılıp bugün onaylanmış olabilir)
   const pendingCount = data.filter((task) => task.status === "pending").length;
   const approvedTodayCount = data.filter(
     (task) =>
       task.status === "approved" &&
-      moment(task.createdAt).isSame(new Date(), "day")
+      moment(task.updatedAt ?? task.createdAt).isSame(new Date(), "day")
   ).length;
   const rejectedTodayCount = data.filter(
     (task) =>
       task.status === "rejected" &&
-      moment(task.createdAt).isSame(new Date(), "day")
+      moment(task.updatedAt ?? task.createdAt).isSame(new Date(), "day")
   ).length;
 
+  // Progress bar'larda acilden düşüğe sıralı gösterim
   const priorityOrder: TaskPriority[] = ["urgent", "high", "normal", "low"];
 
+  // Her öncelik için adet ve toplam içindeki yüzde
   const priorityStats = priorityOrder.map((priority) => {
     const count = data.filter((task) => task.priority === priority).length;
     const percent =
@@ -47,40 +56,41 @@ export default function Dashboard() {
 
     return { priority, count, percent };
   });
+  // Tablo kolonları — Tag renkleri için priorityTagColors / statusTagColors kullanılır
   const columns : ColumnsType<Task> = [
     {
-      title: "Başlık",
+      title: t("table.title"),
       dataIndex: "title",
       key: "title",
       render: (title: string, row: Task) => (
-        <Tooltip  title={row.description}>
-          <span className={styles.tableTitle}>{title}</span>
+        <Tooltip title={row.description}>
+          <div className={styles.tableTitle}>{title}</div>
         </Tooltip>
       ),
     },
     {
-      title: "Kategori",
+      title: t("table.category"),
       dataIndex: "category",
       key: "category",
     },
     {
-      title: "Öncelik",
+      title: t("table.priority"),
       dataIndex: "priority",
       key: "priority",
       render: (priority: TaskPriority) => (
-        <Tag color={priorityTagColors[priority]}>{priorityLabels[priority]}</Tag>
+        <Tag color={priorityTagColors[priority]}>{t(`priority.${priority}`)}</Tag>
       ),
     },
     {
-      title: "Durum",
+      title: t("table.status"),
       dataIndex: "status",
       key: "status",
       render: (status: TaskStatus) => (
-        <Tag color={statusTagColors[status]}>{statusLabels[status]}</Tag>
+        <Tag color={statusTagColors[status]}>{t(`status.${status}`)}</Tag>
       ),
     },
     {
-      title: "Oluşturulma",
+      title: t("table.createdAt"),
       dataIndex: "createdAt",
       key: "createdAt",
       render: (date: string) => (
@@ -91,65 +101,100 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h2>Hoş geldin, {user?.name} 👋</h2>
-      <p>Özet istatistikler burada gösterilecek.</p>
+      <h2 className={styles.pageHeader}>{t("dashboard.welcome", { name: user?.name })}</h2>
+      <p className={styles.pageSubtitle}>{t("dashboard.subtitle")}</p>
 
-      <Row gutter={[16, 16]} className={styles.statsRow}>
-        <Col xs={24} sm={12} lg={8}>
-          <Card className={styles.statCard}>
-            <Statistic
-              valueStyle={{ color: "#faad14" }}
-              title="Bekleyen Talepler"
-              value={pendingCount}
-            />
-          </Card>
-        </Col>
-        <Col xs={24} sm={12} lg={8}>
-          <Card className={styles.statCard}>
-            <Statistic
-              valueStyle={{ color: "#52c41a" }}
-              title="Bugün Onaylanan Talepler"
-              value={approvedTodayCount}
-            />
-          </Card>
-        </Col>
-        <Col xs={24} sm={12} lg={8}>
-          <Card className={styles.statCard}>
-            <Statistic
-              valueStyle={{ color: "#ff4d4f" }}
-              title="Bugün Reddedilen Talepler"
-              value={rejectedTodayCount}
-            />
-          </Card>
-        </Col>
-      </Row>
-
-      <Card className={styles.chartContainer} title="Bekleyen Talepler — Öncelik Dağılımı">
-        <Flex gap="middle" vertical>
-          {priorityStats.map(({ priority, count, percent }) => (
-            <div key={priority} className={styles.priorityRow}>
-              <div className={styles.priorityLabel}>
-                <span style={{ color: priorityTextColors[priority] }}>
-                  {priorityLabels[priority]}
-                </span>
-                <span className={styles.priorityCount}>{count} talep</span>
-              </div>
-              <Progress
-                percent={percent}
-                strokeColor={priorityTextColors[priority]}
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+      >
+        <Row gutter={[12, 12]} className={styles.statsRow}>
+          <Col xs={24} sm={8}>
+            <Card className={styles.statCard}>
+              <Statistic
+                valueStyle={{ color: "#faad14" }}
+                title={t("dashboard.pendingRequests")}
+                value={pendingCount}
               />
-            </div>
-          ))}
-        </Flex>
-      </Card>
+            </Card>
+          </Col>
+          <Col xs={24} sm={8}>
+            <Card className={styles.statCard}>
+              <Statistic
+                valueStyle={{ color: "#52c41a" }}
+                title={t("dashboard.approvedToday")}
+                value={approvedTodayCount}
+              />
+            </Card>
+          </Col>
+          <Col xs={24} sm={8}>
+            <Card className={styles.statCard}>
+              <Statistic
+                valueStyle={{ color: "#ff4d4f" }}
+                title={t("dashboard.rejectedToday")}
+                value={rejectedTodayCount}
+              />
+            </Card>
+          </Col>
+        </Row>
+      </motion.div>
 
-      <Table className={styles.table} size="small" rowKey="id" dataSource={data.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())} columns={columns} 
-         title={() => (
-          <div>
-            <Typography.Text strong>Son Talepler</Typography.Text>
-          </div>
-        )}
-        />
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+      >
+        <Row gutter={[12, 12]} className={styles.bottomRow}>
+          <Col xs={24} lg={8}>
+            <Card className={styles.chartContainer} title={t("dashboard.priorityStats")}>
+              <Flex gap="small" vertical>
+                {priorityStats.map(({ priority, count, percent }) => (
+                  <div key={priority} className={styles.priorityRow}>
+                    <div className={styles.priorityLabel}>
+                      <span style={{ color: priorityTextColors[priority] }}>
+                        {t(`priority.${priority}`)}
+                      </span>
+                      <span className={styles.priorityCount}>
+                        {t("dashboard.requestCount", { count })}
+                      </span>
+                    </div>
+                    <Progress
+                      percent={percent}
+                      strokeColor={priorityTextColors[priority]}
+                      size="small"
+                    />
+                  </div>
+                ))}
+              </Flex>
+            </Card>
+          </Col>
+          <Col xs={24} lg={16}>
+            <Card className={styles.tableContainer} title={t("dashboard.recentRequests")}>
+              <Table
+                size="small"
+                rowKey="id"
+                scroll={{ x: 600 }}
+                dataSource={[...data]
+                  .sort(
+                    (a, b) =>
+                      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+                  )
+                  .slice(0, 5)}
+                columns={columns}
+                pagination={false}
+                footer={() => (
+                  <div>
+                    {t("dashboard.footerText")}{" "}
+                    <Link to={ROUTES.pendingRequests}>{t("dashboard.footerLink")}</Link>.
+                  </div>
+                )}
+                locale={{ emptyText: t("dashboard.noData") }}
+              />
+            </Card>
+          </Col>
+        </Row>
+      </motion.div>
     </div>
   );
 }

@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "api": "json-server db.json --port 3001",
+    "user": "npm --prefix user-panel start",
+    "admin": "PORT=3002 npm --prefix admin-panel start",
+    "dev": "concurrently -n api,user,admin -c blue,green,magenta \"npm:api\" \"npm:user\" \"npm:admin\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

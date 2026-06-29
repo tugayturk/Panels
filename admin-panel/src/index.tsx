@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ConfigProvider } from 'antd';
 import './index.css';
+import './i18n';
 import App from './app/App';
-import reportWebVitals from './reportWebVitals';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
 
@@ -19,5 +19,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-reportWebVitals();

@@ -14,6 +14,7 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
+// İlk tema: localStorage → sistem tercihi → light varsayılan
 const getInitialTheme = (): "light" | "dark" => {
     const savedTheme = localStorage.getItem("theme");
   
@@ -36,6 +37,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     );
 
     useEffect(() => {
+        // data-theme attribute SCSS temalarını tetikler; tercih localStorage'a yazılır
         document.documentElement.setAttribute("data-theme", theme);
         localStorage.setItem("theme", theme);
     }, [theme]);

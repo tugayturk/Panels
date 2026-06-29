@@ -1,0 +1,101 @@
+{
+  "menu": {
+    "dashboard": "Dashboard",
+    "createRequest": "Talep Oluştur",
+    "myRequests": "Taleplerim"
+  },
+  "common": {
+    "logout": "Çıkış",
+    "cancel": "İptal",
+    "create": "Oluştur",
+    "submit": "Gönder",
+    "close": "Kapat",
+    "select": "Seçiniz"
+  },
+  "login": {
+    "welcome": "Hoş Geldiniz",
+    "subtitle": "Hesabınıza giriş yapın",
+    "email": "Email Adresi",
+    "emailPlaceholder": "örnek@email.com",
+    "password": "Şifre",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Giriş Yap",
+    "loading": "Giriş yapılıyor...",
+    "footer": "© 2026 Beymen - Kullanıcı Portalı",
+    "brandName": "Case",
+    "brandTagline": "Kullanıcı Portalı",
+    "brandDesc": "Taleplerinizi kolayca oluşturun ve takip edin. Başvuru durumunuzu anlık olarak görüntüleyin, güncellemeleri anında öğrenin.",
+    "badge1": "Talep Oluştur",
+    "badge2": "Durum Takibi",
+    "badge3": "Bildirimler"
+  },
+  "dashboard": {
+    "welcome": "Hoş geldin, {{name}} 👋",
+    "subtitle": "Taleplerinize genel bakış",
+    "totalRequests": "Toplam Talep",
+    "pending": "Bekleyen",
+    "approved": "Onaylanan",
+    "rejected": "Reddedilen",
+    "recentRequests": "Son Taleplerim",
+    "noData": "Henüz talep bulunmuyor.",
+    "footerText": "Son 5 talep gösteriliyor. Tümü için",
+    "footerLink": "tıklayınız",
+    "loadError": "Dashboard verileri yüklenemedi.",
+    "noDataError": "Veri bulunamadı."
+  },
+  "table": {
+    "title": "Başlık",
+    "category": "Kategori",
+    "priority": "Öncelik",
+    "status": "Durum",
+    "createdAt": "Oluşturulma",
+    "detail": "Detay",
+    "requestCount": "Talep Sayısı: {{count}}"
+  },
+  "priority": {
+    "low": "Düşük",
+    "normal": "Normal",
+    "high": "Yüksek",
+    "urgent": "Acil",
+    "selectPlaceholder": "Öncelik seçiniz",
+    "selectRequired": "Öncelik seçiniz"
+  },
+  "status": {
+    "pending": "Bekliyor",
+    "approved": "Onaylandı",
+    "rejected": "Reddedildi"
+  },
+  "category": {
+    "technicalSupport": "Teknik Destek",
+    "leaveRequest": "İzin Talebi",
+    "purchase": "Satın Alma",
+    "other": "Diğer",
+    "selectPlaceholder": "Kategori seçiniz",
+    "selectRequired": "Kategori seçiniz"
+  },
+  "taskCreation": {
+    "pageTitle": "Talep Oluştur",
+    "modalTitle": "Talep Oluştur",
+    "titleLabel": "Başlık",
+    "titlePlaceholder": "Talep Başlığı",
+    "titleRequired": "Lütfen başlık giriniz!",
+    "descLabel": "Açıklama",
+    "descPlaceholder": "Talep Açıklaması",
+    "descRequired": "Lütfen açıklama giriniz!",
+    "successToast": "Talep başarıyla oluşturuldu!",
+    "errorToast": "Talep oluşturulurken bir hata oluştu."
+  },
+  "taskDetail": {
+    "modalTitle": "Talep Detayı",
+    "description": "Açıklama",
+    "priority": "Öncelik",
+    "category": "Kategori",
+    "status": "Durum",
+    "createdAt": "Oluşturulma",
+    "updatedAt": "Güncellenme",
+    "rejectionReason": "Red Nedeni"
+  },
+  "footer": {
+    "userPanel": "User Panel ©{{year}}"
+  }
+}

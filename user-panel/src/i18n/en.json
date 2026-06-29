@@ -1,0 +1,101 @@
+{
+  "menu": {
+    "dashboard": "Dashboard",
+    "createRequest": "Create Request",
+    "myRequests": "My Requests"
+  },
+  "common": {
+    "logout": "Logout",
+    "cancel": "Cancel",
+    "create": "Create",
+    "submit": "Submit",
+    "close": "Close",
+    "select": "Select"
+  },
+  "login": {
+    "welcome": "Welcome",
+    "subtitle": "Sign in to your account",
+    "email": "Email Address",
+    "emailPlaceholder": "example@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Sign In",
+    "loading": "Signing in...",
+    "footer": "© 2026 Beymen - User Portal",
+    "brandName": "Case",
+    "brandTagline": "User Portal",
+    "brandDesc": "Easily create and track your requests. View your application status in real-time and receive instant updates.",
+    "badge1": "Create Request",
+    "badge2": "Status Tracking",
+    "badge3": "Notifications"
+  },
+  "dashboard": {
+    "welcome": "Welcome, {{name}}",
+    "subtitle": "Overview of your requests",
+    "totalRequests": "Total Requests",
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "recentRequests": "My Recent Requests",
+    "noData": "No requests yet.",
+    "footerText": "Showing last 5 requests. For all,",
+    "footerLink": "click here",
+    "loadError": "Failed to load dashboard data.",
+    "noDataError": "No data found."
+  },
+  "table": {
+    "title": "Title",
+    "category": "Category",
+    "priority": "Priority",
+    "status": "Status",
+    "createdAt": "Created At",
+    "detail": "Detail",
+    "requestCount": "Request Count: {{count}}"
+  },
+  "priority": {
+    "low": "Low",
+    "normal": "Normal",
+    "high": "High",
+    "urgent": "Urgent",
+    "selectPlaceholder": "Select priority",
+    "selectRequired": "Please select a priority"
+  },
+  "status": {
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected"
+  },
+  "category": {
+    "technicalSupport": "Technical Support",
+    "leaveRequest": "Leave Request",
+    "purchase": "Purchase",
+    "other": "Other",
+    "selectPlaceholder": "Select category",
+    "selectRequired": "Please select a category"
+  },
+  "taskCreation": {
+    "pageTitle": "Create Request",
+    "modalTitle": "Create Request",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Request Title",
+    "titleRequired": "Please enter a title!",
+    "descLabel": "Description",
+    "descPlaceholder": "Request Description",
+    "descRequired": "Please enter a description!",
+    "successToast": "Request created successfully!",
+    "errorToast": "An error occurred while creating the request."
+  },
+  "taskDetail": {
+    "modalTitle": "Request Detail",
+    "description": "Description",
+    "priority": "Priority",
+    "category": "Category",
+    "status": "Status",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "rejectionReason": "Rejection Reason"
+  },
+  "footer": {
+    "userPanel": "User Panel ©{{year}}"
+  }
+}

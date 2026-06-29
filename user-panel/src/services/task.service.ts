@@ -6,6 +6,7 @@ export const getTaskById = async (id: string): Promise<Task> => {
   return response.data;
 };
 
+// Tüm talepleri çekip kullanıcıya ait olanları filtreler
 export const getTasks = async (userId: string): Promise<Task[]> => {
   const response = await api.get<Task[]>("/tasks");
   return response.data.filter((task) => task.createdBy === userId);

@@ -7,4 +7,7 @@ export interface LoginRequest {
     id: string;
     name: string;
     email: string;
+
   }
+
+

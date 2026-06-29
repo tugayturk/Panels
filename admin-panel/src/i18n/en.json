@@ -1,0 +1,159 @@
+{
+  "menu": {
+    "dashboard": "Dashboard",
+    "pendingRequests": "Pending Requests",
+    "allRequests": "All Requests",
+    "userManagement": "User Management"
+  },
+  "common": {
+    "logout": "Logout",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Approve",
+    "reject": "Reject",
+    "search": "Search",
+    "filter": "Filter",
+    "reset": "Reset",
+    "close": "Close",
+    "add": "Add",
+    "delete": "Delete",
+    "update": "Update",
+    "actions": "Actions",
+    "noPermission": "You are not authorized",
+    "loading": "Loading...",
+    "yes": "Yes",
+    "no": "No",
+    "records": "records"
+  },
+  "login": {
+    "welcome": "Welcome",
+    "subtitle": "Sign in to your account",
+    "email": "Email Address",
+    "emailPlaceholder": "example@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Sign In",
+    "loading": "Signing in...",
+    "footer": "© 2026 Beymen - Admin Panel",
+    "brandName": "Case",
+    "brandTagline": "Admin Control Panel",
+    "brandDesc": "Track all your requests with the control panel.",
+    "badge1": "Requests",
+    "badge2": "User Management",
+    "badge3": "Statistics"
+  },
+  "dashboard": {
+    "welcome": "Welcome, {{name}} 👋",
+    "subtitle": "Summary statistics are shown here.",
+    "pendingRequests": "Pending Requests",
+    "approvedToday": "Approved Today",
+    "rejectedToday": "Rejected Today",
+    "priorityStats": "Priority Distribution",
+    "recentRequests": "Recent Requests",
+    "requestCount": "{{count}} requests",
+    "footerText": "Showing last 5 requests. For all,",
+    "footerLink": "click here",
+    "noData": "No requests yet."
+  },
+  "table": {
+    "title": "Title",
+    "user": "User",
+    "category": "Category",
+    "priority": "Priority",
+    "status": "Status",
+    "createdAt": "Created At",
+    "requestDate": "Request Date",
+    "actions": "Actions",
+    "description": "Description",
+    "role": "Role",
+    "email": "Email",
+    "name": "Name",
+    "searchUser": "Search User",
+    "searchField": "Search {{field}}",
+    "selectDate": "Select date"
+  },
+  "priority": {
+    "low": "Low",
+    "normal": "Normal",
+    "high": "High",
+    "urgent": "Urgent"
+  },
+  "status": {
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected"
+  },
+  "category": {
+    "technicalSupport": "Technical Support",
+    "leaveRequest": "Leave Request",
+    "purchase": "Purchase",
+    "other": "Other"
+  },
+  "taskDetail": {
+    "modalTitle": "Request Detail",
+    "description": "Description",
+    "priority": "Priority",
+    "category": "Category",
+    "status": "Status",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "user": "User",
+    "rejectionReason": "Rejection Reason"
+  },
+  "pendingRequests": {
+    "pageTitle": "Pending Requests",
+    "pageSubtitle": "Requests awaiting approval are listed here.",
+    "approveConfirm": "Approve this request?",
+    "rejectModalTitle": "Enter Rejection Reason",
+    "rejectReasonPlaceholder": "Enter rejection reason...",
+    "rejectReasonRequired": "Please enter a rejection reason.",
+    "rejectReasonMinLength": "Rejection reason must be at least 3 characters.",
+    "approveSuccess": "Request approved.",
+    "approveError": "Could not approve request.",
+    "rejectSuccess": "Request rejected.",
+    "rejectError": "Could not reject request.",
+    "footerTotal": "Pending Requests: {{count}}"
+  },
+  "allRequests": {
+    "pageTitle": "All Requests",
+    "footerApproved": "Approved: {{count}}",
+    "footerRejected": "Rejected: {{count}}",
+    "footerPending": "Pending: {{count}}",
+    "paginationTotal": "{{start}}-{{end}} / {{total}} records"
+  },
+  "userManagement": {
+    "pageTitle": "User Management",
+    "addUser": "Add User",
+    "deleteConfirmTitle": "Are you sure you want to delete?",
+    "deleteConfirmDesc": "This action cannot be undone.",
+    "deleteSuccess": "User deleted successfully",
+    "deleteError": "Could not delete user",
+    "deleteTooltip": "Delete",
+    "updateTooltip": "Update"
+  },
+  "addUserModal": {
+    "titleAdd": "Add User",
+    "titleUpdate": "Update User",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "E.g. John Doe",
+    "nameError": "Name must be at least 2 characters",
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@company.com",
+    "emailError": "Enter a valid email",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "At least 6 characters",
+    "passwordError": "Password must be at least 6 characters",
+    "roleLabel": "Role",
+    "addSuccess": "User added successfully",
+    "updateSuccess": "User updated successfully",
+    "genericError": "An error occurred"
+  },
+  "unauthorized": {
+    "title": "403",
+    "subtitle": "You do not have permission to access this page.",
+    "backHome": "Back to Home"
+  },
+  "footer": {
+    "adminPanel": "Admin Panel ©{{year}}"
+  }
+}

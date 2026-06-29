@@ -1,5 +1,7 @@
 import { Role } from "./role.types";
 
+export type { Role };
+
 export interface LoginRequest {
   email: string;
   password: string;

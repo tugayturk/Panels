@@ -2,33 +2,25 @@ import {
   DashboardOutlined,
   FileTextOutlined,
   LogoutOutlined,
-  UserOutlined,
+  MenuOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, theme, Typography } from "antd";
+import { Button, Drawer, Layout, Menu, theme } from "antd";
+import { useState } from "react";
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../../store/slices/authSlice";
 import styles from "./AppLayout.module.scss";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { ThemeToggle } from "../../components/ThemeToggle/ThemeToggle";
+import { ThemeToggle } from "../../components/ThemeToggle";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
+import { ROUTES } from "../../routes/paths";
 
 const { Header, Sider, Content, Footer } = Layout;
 
-const menuItems = [
-  {
-    key: "dashboard",
-    icon: <DashboardOutlined />,
-    label: "Dashboard",
-  },
-  {
-    key: "talep-olustur",
-    icon: <FileTextOutlined />,
-    label: "Talep Oluştur",
-  },
-  {
-    key: "taleplerim",
-    icon: <FileTextOutlined />,
-    label: "Taleplerim",
-  },
+const menuDefs = [
+  { key: "dashboard",     icon: <DashboardOutlined />, labelKey: "menu.dashboard" },
+  { key: "talep-olustur", icon: <FileTextOutlined />,  labelKey: "menu.createRequest" },
+  { key: "taleplerim",    icon: <FileTextOutlined />,  labelKey: "menu.myRequests" },
 ];
 
 const siderStyle: React.CSSProperties = {
@@ -47,54 +39,97 @@ export function AppLayout() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={ROUTES.login} replace />;
   }
 
+  const menuItems = menuDefs.map((d) => ({ key: d.key, icon: d.icon, label: t(d.labelKey) }));
   const selectedKey = location.pathname.split("/")[1] || "dashboard";
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/login");
+    navigate(ROUTES.login);
+  };
+
+  const handleMenuClick = ({ key }: { key: string }) => {
+    navigate(`/${key}`);
+    setMobileMenuOpen(false);
   };
 
   return (
     <Layout hasSider>
-      <Sider style={siderStyle}>
+      <Sider
+        style={siderStyle}
+        breakpoint="lg"
+        collapsedWidth={0}
+        onBreakpoint={(broken) => setIsMobile(broken)}
+      >
         <div className={styles.logo}>User Panel</div>
         <Menu
           theme="dark"
           mode="inline"
           selectedKeys={[selectedKey]}
           items={menuItems}
-          onClick={({ key }) => navigate(`/${key}`)}
+          onClick={handleMenuClick}
         />
       </Sider>
+
+      {/* Mobil drawer menü */}
+      <Drawer
+        title="User Panel"
+        placement="left"
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        width={220}
+        styles={{ body: { padding: 0 } }}
+      >
+        <Menu
+          mode="inline"
+          selectedKeys={[selectedKey]}
+          items={menuItems}
+          onClick={handleMenuClick}
+          style={{ borderRight: 0 }}
+        />
+      </Drawer>
+
       <Layout>
         <Header
           className={styles.header}
           style={{ background: colorBgContainer }}
         >
-          <Typography.Text strong>{user.name}</Typography.Text>
+          <div className={styles.headerLeft}>
+            {isMobile && (
+              <Button
+                type="text"
+                icon={<MenuOutlined />}
+                onClick={() => setMobileMenuOpen(true)}
+              />
+            )}
+            <div className={styles.userName} style={{ maxWidth: 160 }}>{user.name}</div>
+          </div>
           <div className={styles.headerActions}>
             <ThemeToggle />
+            <LanguageSwitcher />
             <Button
               type="text"
               icon={<LogoutOutlined />}
               onClick={handleLogout}
             >
-              Çıkış
+              {t("common.logout")}
             </Button>
           </div>
         </Header>
-        <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
+        <Content style={{ margin: "16px 16px 0", overflow: "auto" }}>
           <div
             style={{
-              padding: 24,
+              padding: 16,
               minHeight: 360,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
@@ -104,7 +139,7 @@ export function AppLayout() {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          User Panel ©{new Date().getFullYear()}
+          {t("footer.userPanel", { year: new Date().getFullYear() })}
         </Footer>
       </Layout>
     </Layout>
