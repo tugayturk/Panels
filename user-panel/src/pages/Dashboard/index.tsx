@@ -23,7 +23,7 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { ROUTES } from "../../routes/paths";
-import styles from "./Dashboard.module.scss";
+import styles from "./dashboard.module.scss";
 // Kullanıcı paneli ana sayfa — istatistik kartları + son 5 talep
 export function Dashboard() {
   const { t } = useTranslation();
