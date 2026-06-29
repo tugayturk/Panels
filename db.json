@@ -278,28 +278,6 @@
       "updatedAt": "2026-06-23T13:00:00.000Z",
       "reviewedBy": "adm-001",
       "reviewedAt": "2026-06-23T13:00:00.000Z"
-    },
-    {
-      "id": "pYG_g7UtayU",
-      "title": "Donanım Değişim Talebi",
-      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
-      "status": "pending",
-      "priority": "normal",
-      "category": "Genel",
-      "createdBy": "usr-002",
-      "createdAt": "2026-06-29T12:52:01.581Z",
-      "updatedAt": "2026-06-29T12:52:01.581Z"
-    },
-    {
-      "id": "sg-rNr2CJGY",
-      "title": "Donanım Değişim Talebi",
-      "description": "Socket simülasyonu ile oluşturulan otomatik talep.",
-      "status": "pending",
-      "priority": "normal",
-      "category": "Teknik Destek",
-      "createdBy": "usr-002",
-      "createdAt": "2026-06-29T12:52:21.580Z",
-      "updatedAt": "2026-06-29T12:52:21.580Z"
     }
   ],
   "dashboardStats": {
