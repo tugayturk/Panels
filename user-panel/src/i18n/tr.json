@@ -31,7 +31,7 @@
   },
   "dashboard": {
     "welcome": "Hoş geldin, {{name}} 👋",
-    "subtitle": "Taleplerinize genel bakış",
+    "subtitle": "Taleplerinize genel bakış.",
     "totalRequests": "Toplam Talep",
     "pending": "Bekleyen",
     "approved": "Onaylanan",
